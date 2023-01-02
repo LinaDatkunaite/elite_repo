@@ -1,0 +1,12 @@
+[a-zA-z.]+@[a-zA-z]+\.\w{1,3}
+[a-zA-z.]+@[a-zA-z]+\.(com|edu|net)
+[a-zA-z0-9.-]+@[a-zA-z]+\.\w{2,3}
+[a-zA-z0-9.-]+@[a-zA-z0-9.-]+\.\w{2,3}
+[a-zA-z0-9_.+-]+@[a-zA-z0-9-]+\.[a-zA-Z0-9-.]+
+
+
+VardenisPavardenis@gmail.com
+vardenis.pavardenis@school.edu
+VardenisPavardenis@work.net
+vardenis-123-pavardenis@work.net
+vardenis-123-pavardenis@yahoo.co.uk

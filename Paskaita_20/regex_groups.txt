@@ -1,0 +1,25 @@
+https?.//(www\.)?\w+\.\w+
+
+https://www.google.com
+http://somewebsite.com
+http://youtube.com
+https://www.youtube.com
+
+
+
+https?.//(www\.)?(\w+)(\.\w+)
+replace irasau $1 ir gaunu 1a grupe
+replace irasau $2$3 ir gaunu viskas kas po www
+$1S$2$3 - groupes
+
+
+VardenisPavardenis@gmail.com
+vardenis.pavardenis@our-school.edu
+vardenis_pavardenis@our-school.edu
+vardenis-123-pavardenis@work.net
+vardenis-123-pavardenis@yahoo.com.mx
+
+[a-zA-Z.]+@[a-zA-Z]+\.(com|edu|net|gov)
+[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.\w{2,3}
+
+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+

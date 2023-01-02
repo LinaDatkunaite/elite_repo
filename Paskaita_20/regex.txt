@@ -1,0 +1,72 @@
+.125
+12345678910   - paimti nuo 1 iki 7 [1-7]
+1.4.5.2.*{[+-
+Bla Bla Bla
+Ačiū
+Something.com
+123-555-1234    - paimti siems \d\d\d.\d\d\d.\d\d\d\d
+123*555-1234
+8000.555.*4321 - paimti si \d\d\d\d.\d\d\d\..\d\d\d\d arba daryti setus \d\d\d[-.*] lauztiniuose arba / rasti 8000 - [8]000
+
+rasti siuos abu apacioje [89]00[*.]\d\d\d[*.]\d\d\d\d
+900*555*4321
+800.555.4321
+
+Mr\.?\s[A-Z]\w*
+M(r|s|rs).?\s[A-Z]\w*
+
+Mr. John
+Mr John
+Ms Doe
+Mrs. Doe
+Mr D
+
+[^b]at - nepaima bat paima rat and cat
+cat
+bat
+rat
+
+-------------------------------------------------
+cheat sheet - https://regexr.com/
+# https://pythex.org/
+# regex - regular expression - filtravimas simboliu tam tikros sekos nurodant tam tikrus parametrus,
+# kad is texto galetumem issitraukt ko reikia arba daryti validacijas
+-------------------------------------------------
+pagrindine sintakse:
+\. or \$- special chacter always use slash befor
+. - select all lines
+. - Any character except new line
+\d - digit 0-9
+\D - not a digit
+\w - a word character (a-z, A-Z, 0-9 _)  \w{3,5}
+\W - not a word character
+\s - whitespace (space, tab etc)
+\S - not a space
+
+kitos komandos:
+\b - word boundary \bBla arba is abieju pusiu boundary \bBla\b
+\B - not word boundary
+^ - begining of string ^Bla [^a-z]
+$ - end of string Bla$
+
+Quantifiers:
+* - 0 or more
++ - 1 or more ()turi but bent vienas characteris
+? - 0 or one gali arba negali buti
+{3} - Exact number
+{3,4} - Min max in range    \d{3}.\d{3}.\d{3,5}, \w{3,5} turime nurodyti ko ieskoti zodziu ar skaiciu
+
+
+
+(|) - grupe
+[a-z] - everything in lower space from a to z
+[A-Z] - everything in upper space from a to z
+[a-zA-Z0-9] - all character from a-z regardless caps lock and from 0 to 9
+lietuviskus simbolius reikia konkreciai issitraukti [čū] arba [a-zA-Z0-9čū]
+
+isskyrus:
+[^a-z] - viskas isskyrus mazasias raides
+[^a-z] - viskas isskyrus didziasias raides
+[^1-4] - viskas isskyrus nuo 1 iki 4
+
+
