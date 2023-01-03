@@ -24,3 +24,4 @@ Išrinkite visus žodžius prieš dvitaškį \w+(?=\:)  .+(?=:)
 Parašykite paprastą šabloną el. paštui
 [a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6} - Tai yra nesudėtingas el. pašto šablonas. Išnagrinėkite, palyginkite su savo sukurtu.
 Nebūtina kas kartą kurti to, kas jau senai atitirbta. Internete gausu informacijos apie dažniausiai naudojamus regex šablonus. Pvz. https://digitalfortress.tech/tricks/top-15-commonly-used-regex/ - pasinagrinėkite.
+
