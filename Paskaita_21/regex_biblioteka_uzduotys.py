@@ -69,7 +69,6 @@ for date, name in zip(result_date, result_name):
 
 
 # def cenzura(zodziai, *keiksmai):
-#     l = keiksmai
 #     pattern = re.compile(r'([A - ZĄČĘĖĮŠŲŪŪŽa - ząčęėįšųūž]+)')
 #     result5 = pattern.sub('\g<1>', zodziai)
 #     result = result5.lower()
