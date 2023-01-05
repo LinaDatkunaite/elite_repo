@@ -100,9 +100,10 @@ def range_print(range_no):
     for i in range(range_no+1):
         print(i)
 
-range_print(1000)
+range_print(100)
 
 import requests
+
 @time_counter
 def status_code(extention):
     r = requests.get(extention)  # sukuriame http užklausą
