@@ -4,3 +4,11 @@ https://github.com/StasysC/Python-2lvl
 github pw: Fortuna123$321
 github username: LinaDatkunaite
 email: Fortuna123
+
+
+paskaitos:
+1. Regex1
+2. Regex2
+3. Decorators
+4. Iterators-generators
+5. Pillow - work with images
