@@ -1,21 +1,4 @@
-# class Target:
-#     def __init__(self, x, y):
-#         self.x = x
-#         self.y = y
-#         self.target_dict = {"X": self.x, "Y": self.y}
-#
-#     def target_coordinates(self):
-#         self.target_dict["X"] = self.x
-#         self.target_dict["Y"] = self.y
-#         return self.target_dict
-#
-#     def target_random_gen(self):
-#         self.target_dict["X"] = random.randint(1, 10)
-#         self.target_dict["Y"] = random.randint(1, 10)
-#         return self.target_dict
-#
-# target = Target(1,0)
-
+import random
 class Tank:
     def __init__(self, x=0, y=0, shoots=0):
         self.coordinates_dict = {"X": 0, "Y": 0, "Direction": ""}
@@ -24,45 +7,51 @@ class Tank:
         self.x = x
         self.y = y
         self.shoots = shoots
+        self.points = 100
+        self.succesful_shoots = 0
 
     def forward(self, new_y):
         self.y = self.y + new_y
         self.coordinates_dict["X"] = self.x
         self.coordinates_dict["Y"] = self.y
         self.coordinates_dict["Direction"] = "North"
+        self.points-=new_y*10
 
     def backwards(self, new_y):
         self.y = self.y - new_y
         self.coordinates_dict["X"] = self.x
         self.coordinates_dict["Y"] = self.y
         self.coordinates_dict["Direction"] = "South"
+        self.points -= new_y * 10
 
     def left(self, new_x):
         self.x = self.x - new_x
         self.coordinates_dict["X"] = self.x
         self.coordinates_dict["Y"] = self.y
         self.coordinates_dict["Direction"] = "West"
+        self.points -= new_x * 10
 
     def right(self, new_x):
         self.x = self.x + new_x
         self.coordinates_dict["X"] = self.x
         self.coordinates_dict["Y"] = self.y
         self.coordinates_dict["Direction"] = "East"
+        self.points -= new_x * 10
 
     def shoot(self):
-        if self.coordinates_dict["Direction"] == ["North"]:
+        if self.coordinates_dict["Direction"] == "North":
             new = self.shoots_fired["North"] + 1
             self.shoots_fired["North"] = new
 
-        if self.coordinates_dict["Direction"] == ["South"]:
+        if self.coordinates_dict["Direction"] == "South":
             new = self.shoots_fired["South"] + 1
             self.shoots_fired["South"] = new
 
-        if self.coordinates_dict["Direction"] == ["West"]:
+        if self.coordinates_dict["Direction"] == "West":
             new = self.shoots_fired["West"] + 1
             self.shoots_fired["West"] = new
 
-        if self.coordinates_dict["Direction"] == ["East"]:
+        if self.coordinates_dict["Direction"] == "East":
             new = self.shoots_fired["East"] + 1
             self.shoots_fired["East"] = new
 
@@ -71,17 +60,33 @@ class Tank:
         if self.coordinates_dict["Y"] == self.target_coordinates["Y"]:
             if self.coordinates_dict["X"] < self.target_coordinates["X"] and self.coordinates_dict[
                 "Direction"] == "East":
+                self.target_coordinates["X"] = random.randint(1, 5)
+                self.target_coordinates["Y"] = random.randint(1, 5)
+                self.points+=50
+                self.succesful_shoots += 1
                 return True
             elif self.coordinates_dict["X"] > self.target_coordinates["X"] and self.coordinates_dict[
                 "Direction"] == "West":
+                self.target_coordinates["X"] = random.randint(1, 5)
+                self.target_coordinates["Y"] = random.randint(1, 5)
+                self.points += 50
+                self.succesful_shoots += 1
                 return True
             return False
         if self.coordinates_dict["X"] == self.target_coordinates["X"]:
             if self.coordinates_dict["Y"] < self.target_coordinates["Y"] and self.coordinates_dict[
                 "Direction"] == "North":
+                self.target_coordinates["X"] = random.randint(1, 5)
+                self.target_coordinates["Y"] = random.randint(1, 5)
+                self.points += 50
+                self.succesful_shoots += 1
                 return True
             elif self.coordinates_dict["Y"] > self.target_coordinates["Y"] and self.coordinates_dict[
                 "Direction"] == "South":
+                self.target_coordinates["X"] = random.randint(1, 5)
+                self.target_coordinates["Y"] = random.randint(1, 5)
+                self.points += 50
+                self.succesful_shoots += 1
                 return True
             return False
 
@@ -90,15 +95,14 @@ class Tank:
         for i in self.shoots_fired.values():
             total_shoots += i
 
-        return f'Your Coordinates: {self.coordinates_dict},\nTarget Coordinates: {self.target_coordinates}\nYour Shoots: {self.shoots_fired}, \nTotal shoots: {total_shoots}'
+        return f'Your Coordinates: {self.coordinates_dict},\nTarget Coordinates: {self.target_coordinates}\nTotal shoots: {total_shoots} {self.shoots_fired}, \nTotal score: {self.points}, \nSuccessful shoots: {self.succesful_shoots}'
 
 
 tank = Tank()
 
 while True:
-
     choice = int(input(
-        "Choose\n1.Input move\n2.Info\n3.Shoots\n4.Shoot result\n5.Quit"))
+        "Choose\n1.Input move\n2.Info\n3.Shoot\n4.Quit"))
     if choice == 1:
         move_choice = int(input("Choose your move: 1 - forward, 2 - backward, 3 - left, 4 - right "))
         if move_choice == 1:
@@ -114,13 +118,26 @@ while True:
             right_x = int(input("How much right? "))
             tank.right(right_x)
     if choice == 2:
+        print("-" * 30)
         print(tank.info())
+        print("-" * 30)
     if choice == 3:
         tank.shoot()
-        print("-" * 3)
-        print("Boom")
-        print(tank.shoot_result())
-        print("-" * 3)
-    if choice == 5:
+        print("-" * 30)
+        print("Boom!")
+        if tank.shoot_result():
+            print("Success!")
+        else:
+            print("Failed..")
+        print("-" * 30)
+    if choice == 4:
+        print("-" * 30)
         print("End of game")
+        print("-" * 30)
         break
+    if choice == '':
+        print("-" * 30)
+        print("No choice made - program closed")
+        print("-" * 30)
+        break
+
