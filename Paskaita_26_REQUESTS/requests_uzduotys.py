@@ -43,17 +43,17 @@ string_text = r.text.split()
 
 # Searching for index of these two and cutting list to contain only Vilnius data:
 word_Vilnius = 'href="https://orai.15min.lt/prognoze/vilnius">Vilnius</a>'
-word_Kaunas = 'href="https://orai.15min.lt/prognoze/kaunas">Kaunas</a>'
 index1=string_text.index(word_Vilnius)
-index2=string_text.index(word_Kaunas)
-vilnius = string_text[index1:index2]
+
+
+vilnius = string_text[index1:index1+80]
 
 # from list to string
 Vilnius_string=""
 for x in vilnius:
     Vilnius_string += " " +x
 
-
+print(Vilnius_string)
 # use regex to find numbers
 pattern1 = re.compile(r"\d{4}\.\d{2}")
 pressure = pattern1.findall(Vilnius_string)
@@ -67,13 +67,14 @@ pattern3 = re.compile(r"\d\.\d{2}\s[m][m]")
 rain = pattern3.findall(Vilnius_string)
 
 
-pattern4 = re.compile(r"[\s|\-]\d\°")
+pattern4 = re.compile(r"[\+|\s|\-]\d\°")
 temperature = pattern4.findall(Vilnius_string)
+print(temperature)
 
 
 # Answer:
 print("CITY - VILNIUS")
-print(f"{'PARAMETER':<25}{'DAY':<15} NIGHT")
+print(f"{'PARAMETER':}{'DAY':<15} NIGHT")
 print("-"*60)
 print(f"Temperature\t\t\t\t{temperature[0]}\t\t\t\t{temperature[1]}")
 
