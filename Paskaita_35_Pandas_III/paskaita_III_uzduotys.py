@@ -35,6 +35,7 @@ print('Most wildfires in: ', df['year'].value_counts().idxmax())
 print('-'*100)
 print(df[df['deaths']>=1].shape[0])
 
+
 # 8 Surūšiuokite eilutes pagal metus. Išsiaiškinkite, kaip rūšiuoti, kad naujausi gaisrai būtų viršuje
 print('-'*100)
 print(df.sort_values('year', ascending=False).to_string())
@@ -74,10 +75,11 @@ lithuania_cities.set_index('Miestas', inplace=True)
 
 
 columns = lithuania_cities.columns.tolist()
+print(columns)
 new_list = []
 for item in columns:
-    fixed = item.replace('\xa0m.', '')
-    new_list.append(fixed)
+    new_column_name = item.replace('\xa0m.', '')
+    new_list.append(new_column_name)
 
 lithuania_cities.columns = new_list
 print(lithuania_cities)
@@ -87,23 +89,22 @@ lithuania_cities.drop('Tankumas (2019)', axis=1, inplace=True)
 
 lithuania_cities.fillna(int(0),inplace=True)
 
-
 print(lithuania_cities.info())
-# print(any([isinstance(x, int) for x in lithuania_cities['1923']]))
-# print(lithuania_cities)
 
 def fix_dates(value):
     if '*' in str(value):
-        return (value.replace('*', ''))
+        return int(value.replace('*', ''))
     if '(?)' in str(value):
-        return (value.replace('(?)', str(0)))
+        return int(value.replace('(?)', str(0)))
     if '(??)' in str(value):
-        return (value.replace('(??)', str(0)))
+        return int(value.replace('(??)', str(0)))
     return int(value)
 
 
 lithuania_cities['1897'] = lithuania_cities['1897'].apply(fix_dates)
 lithuania_cities['1923'] = lithuania_cities['1923'].apply(fix_dates)
+lithuania_cities['1959'] = lithuania_cities['1959'].apply(fix_dates)
+lithuania_cities['1970'] = lithuania_cities['1970'].apply(fix_dates)
 
 print(lithuania_cities.to_string())
 
