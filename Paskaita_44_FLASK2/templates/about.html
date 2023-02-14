@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	<link rel="stylesheet" href="/static/css/about.css">
+	<h2>About the webpage:</h2>
+	<h2>About second H2</h2>
+	<p class="paragraph">This is to be my amazing web page one day!</p>
+	{%for i in "HELLO!"%}
+		<h2>{{i}}</h2>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block content %}
+	{% for dictionary in data %}
+		{% if dictionary['id'] == id %}
+			<h2>Article ID: {{dictionary['id']}}</h2>
+			<h2>{{dictionary['date']}} - {{dictionary['author']}}</h2>
+			<h4>{{dictionary['text']}}</h4>
+<!--			<p>{{dictionary['text']}}</p>-->
+		{% endif %}
+	{% endfor %}
+{% endblock %}

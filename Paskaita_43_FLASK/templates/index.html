@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mano puslapis</title>
+    <h1>NAVIGATION</h1>
+</head>
+
+
+
+
+<body>
+<a href = 'http://127.0.0.1:8000/about' ><strong>About</strong></a>
+
+<a href = 'http://127.0.0.1:8000/straipsniai' ><strong>straipsniai</strong></a>
+<div>
+    {% block content%}
+    {% endblock%}
+</div>
+  <h1>Hello</h1>
+  {%for number in range(5)%}
+    {% if number % 2 == 0%}
+        <h2>{{number}}</h2>
+    {% else %}
+        <h6>{{number}}</h6>
+    {% endif %}
+  {% endfor %}
+
+{%for i in data%}
+    <h2>{{i}}</h2>
+  {% endfor %}
+
+
+
+</body>
+</html>
